@@ -1,5 +1,9 @@
 import express from "express";
 import 'dotenv/config'
+import { DataBase } from "./utils/db.js";
+
+// DATA BASE CONFIG
+DataBase()
 
 const app = express()
 
