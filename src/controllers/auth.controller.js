@@ -27,7 +27,7 @@ export const signUpHandler = async (req, res, next) => {
 
         try {
              await newUser.save();
-             res.status(201).json(new ResponseHandle(201, newUser, "user created success"));
+             res.status(201).json(new ResponseHandle(201, newUser, "user created successfully"));
             
         } catch (error) {
             next(error);
