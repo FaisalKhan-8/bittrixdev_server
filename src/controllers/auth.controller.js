@@ -9,7 +9,12 @@ import { ResponseHandle } from "../utils/ResponseHandle.js";
 export const signUpHandler = async (req, res, next) => {
     try {
         const {username, email, password} = new User(req.body);
-        if( !username || !email || !password ){
+        if( !username ||
+            !email ||
+            !password ||
+            username === '' ||
+            email === '' ||
+            password === '' ){
             next(ErrorHandle(400, "All fields are required"))
         }
 
@@ -29,11 +34,11 @@ export const signUpHandler = async (req, res, next) => {
             
         }
 
-
-        
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 
 }
+
+// Login handler...
 
