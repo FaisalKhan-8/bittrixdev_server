@@ -34,11 +34,12 @@ app.use((err, req, res, next) => {
   });
 
 // DATA BASE CONFIG AND SERVER CONFIG
-DataBase().then(
+DataBase()
+.then(() => {
     app.listen(process.env.PORT || 8080,() => {
         console.log(`server listening on port ${process.env.PORT}`);
     })
-);
+});
 
 
 
