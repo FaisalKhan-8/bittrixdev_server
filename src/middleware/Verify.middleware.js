@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { ErrorHandle } from '../utils/ErrorHandle.js';
+import User from '../modules/user.module.js';
 
 export const VerifyUser = (req, res, next) => {
   const token = req.cookies.access_token;
@@ -19,11 +20,17 @@ export const VerifyUser = (req, res, next) => {
 
 // Middleware to check if the user is an admin
 export const CheckAdmin = (req, res, next) => {
-    if (!req.user.isAdmin) {
-      return next(ErrorHandle(403, 'Forbidden: Admins only'));
-    }
+  // Check if req.User exists and isAdmin is true
+  if (req.User && req.User.isAdmin) {
+    // User is an admin, proceed to the next middleware/route handler
     next();
-  };
+  } else {
+    // User is not an admin, return a 403 Forbidden error
+    return next(ErrorHandle(403, 'Forbidden: Admins only'));
+  }
+};
+
+
 
 
 //   import express from 'express';
@@ -41,5 +48,5 @@ export const CheckAdmin = (req, res, next) => {
 //     res.send('Welcome to the admin dashboard!');
 //   });
   
-  export default router;
+  // export default router;
   

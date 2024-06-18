@@ -5,6 +5,7 @@ import cors from 'cors'
 import cookieParser from "cookie-parser";
 
 
+
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -12,12 +13,17 @@ app.use(cookieParser())
 
 
 
+
 // Routes import here...
 import authRoutes from './routes/auth.routes.js'
 import userRoutes from './routes/user.routes.js'
+import heroRoutes from './routes/HeroSection.routes.js'
+
 
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/hero', heroRoutes)
+
 
 
 // Error middleware....
