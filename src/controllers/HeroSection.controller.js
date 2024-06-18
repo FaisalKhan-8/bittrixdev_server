@@ -4,7 +4,7 @@ import { ErrorHandle } from "../utils/ErrorHandle.js";
 
 // TODO: Add small video also in this db or Logic
 
-export const HeroSectionBanner = async (req, res, next) => {
+export const HeroSectionBannerUpload = async (req, res, next) => {
     // Add a console log to check the content of req.file
     console.log('req.file:', req.file);
 
